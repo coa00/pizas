@@ -53,10 +53,6 @@
         "default-case": "error",
         "dot-location": "error",
         "dot-notation": "error",
-        "eol-last": [
-            "error",
-            "never"
-        ],
         "eqeqeq": "error",
         "for-direction": "error",
         "func-call-spacing": "error",
