@@ -5,8 +5,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: "pizas.js",
+    library: "pizas",
     libraryTarget: "umd",
-    library: ['preventiOsZoomAndScoll'],
     path: path.resolve(__dirname, 'build'),
   },
   module: {

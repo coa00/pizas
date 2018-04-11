@@ -1,30 +1,15 @@
-# pizas (prevent ios zoom and scroll)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+</head>
 
-## インストール方法
-
-### global
-
-ダウンロードして読み込むこと。
-
-
-```
-<script src="./lib/pizas.js"></script>
-```
+<body>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
 
-### node
-
-```$xslt
-npm install git+ssh://git@devxserve:29418/aoki.kohei/pizas.git --save-dev
-```
-
-
-
-## 使い方
-
-### global
-
-```$xslt
 <div class="container">
 
     <h1>pizas </h1>
@@ -44,22 +29,6 @@ npm install git+ssh://git@devxserve:29418/aoki.kohei/pizas.git --save-dev
 
 <script src="./build/pizas.js"></script>
 
-```
 
-### import する場合
-
-```$xslt
-
-import { startLockAutoDetect, stopLock } from './lib/pizas';
-
-// 開始
-startLockAutoDetect();
-
-// 停止
-
-stopLock();
-
-```
-
-（未検証）
-
+</body>
+</html>
