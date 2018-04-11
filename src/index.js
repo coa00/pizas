@@ -28,7 +28,7 @@ let lastTouchEnd = 0;
  * @param event
  * @param interval
  */
-const preventDefaultDoubleTap = (event, interval = 300) => {
+const preventDefaultDoubleTap = (event, interval = 500) => {
   const now = new Date().getTime();
   if (now - lastTouchEnd <= interval) {
     log.debug('prevent touch end');
@@ -49,7 +49,7 @@ export const stopScrollLock = () => {
   );
 };
 
-export const startZoomLock = (doubleTapInterval = 300) => {
+export const startZoomLock = (doubleTapInterval = 500) => {
   document.documentElement.addEventListener(
     'touchstart',
     preventDefaultMultiTouch,
@@ -79,7 +79,7 @@ export const stopZoomLock = () => {
   );
 };
 
-export const startLock = (doubleTapInterval = 300) => {
+export const startLock = (doubleTapInterval = 500) => {
   startScrollLock();
   startZoomLock(doubleTapInterval);
 };
@@ -89,7 +89,7 @@ export const stopLock = () => {
   stopZoomLock();
 };
 
-export const startLockAutoDetect = (doubleTapInterval = 300) => {
+export const startLockAutoDetect = (doubleTapInterval = 500) => {
   if ('iOS' === parser.getOS().name) {
     startLock(doubleTapInterval);
   }
