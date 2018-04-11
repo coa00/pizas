@@ -15,7 +15,7 @@
 ### node
 
 ```$xslt
-npm install git+ssh://git@devxserve:29418/aoki.kohei/pizas.git --save-dev
+npm install git+ssh://git@devxserve:29418/aoki.kohei/pizas.git --save
 ```
 
 
