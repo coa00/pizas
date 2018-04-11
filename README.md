@@ -1,10 +1,9 @@
 # pizas (prevent ios zoom and scroll)
 
-## インストール方法
+## install
 
 ### global
 
-ダウンロードして読み込むこと。
 
 
 ```
@@ -12,7 +11,7 @@
 ```
 
 
-### node
+### es6, babel, webpack
 
 ```$xslt
 npm install git+ssh://git@devxserve:29418/aoki.kohei/pizas.git --save
@@ -20,7 +19,7 @@ npm install git+ssh://git@devxserve:29418/aoki.kohei/pizas.git --save
 
 
 
-## 使い方
+## usage
 
 ### global
 
@@ -46,20 +45,17 @@ npm install git+ssh://git@devxserve:29418/aoki.kohei/pizas.git --save
 
 ```
 
-### import する場合
+### es6, babel, webpack
 
 ```$xslt
 
-import { startLockAutoDetect, stopLock } from './lib/pizas';
+import { startLockAutoDetect, stopLock } from 'pizas';
 
-// 開始
+// start
 startLockAutoDetect();
 
-// 停止
-
+// end
 stopLock();
 
 ```
-
-（未検証）
 
