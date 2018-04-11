@@ -1,0 +1,23 @@
+{
+  "name": "pizas",
+  "version": "0.1.0",
+  "description": "prevent defalut zoom and scroll of safari for full screen web app.",
+  "main": "./build/pizas.js",
+  "scripts": {
+    "build": "./node_modules/webpack/bin/webpack.js --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kohei Aoki",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "babel-loader": "^8.0.0-beta.2",
+    "loglevel": "^1.6.1",
+    "ua-parser-js": "^0.7.17",
+    "webpack": "^4.5.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^2.0.14"
+  }
+}
