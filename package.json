@@ -1,10 +1,10 @@
 {
   "name": "pizas",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "prevent defalut zoom and scroll of safari for full screen web app.",
   "main": "./build/pizas.js",
   "scripts": {
-    "version": "npm run build && git add -A lib",
+    "version": "npm run build && git add -A build",
     "postversion": "git push && git push --tags",
     "build": "./node_modules/webpack/bin/webpack.js --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
