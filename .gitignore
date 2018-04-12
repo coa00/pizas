@@ -117,6 +117,7 @@ fabric.properties
 .idea/httpRequests
 
 
-.idea/*
+.idea
+.npm
 
 
