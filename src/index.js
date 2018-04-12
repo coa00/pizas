@@ -2,7 +2,20 @@ import UAParser from 'ua-parser-js';
 import loglevel from 'loglevel';
 
 const log = loglevel.getLogger('preventZoomAndScroll');
+
 const parser = new UAParser();
+
+if (process.env.NODE_ENV === 'development') {
+  log.setLevel('debug');
+} else {
+  log.setLevel('silent');
+}
+
+const configs = {
+  addEventListenerOptions: { capture: false, passive: false },
+  doubleTapInterval: 500,
+  targetRootDom: document.documentElement
+};
 
 /**
  * @param event
@@ -17,7 +30,7 @@ const preventDefaultTouchMove = event => {
  */
 const preventDefaultMultiTouch = event => {
   if (event.touches.length > 1) {
-    log.debug('prevent touch start');
+    log.debug('prevent multi touch', event.touches.length);
     event.preventDefault();
   }
 };
@@ -25,72 +38,107 @@ const preventDefaultMultiTouch = event => {
 let lastTouchEnd = 0;
 
 /**
+ * Prevent default double tap
+ *
  * @param event
- * @param interval
  */
-const preventDefaultDoubleTap = (event, interval = 500) => {
+const preventDefaultDoubleTap = event => {
   const now = new Date().getTime();
-  if (now - lastTouchEnd <= interval) {
+  if (now - lastTouchEnd <= configs.doubleTapInterval) {
     log.debug('prevent touch end');
     event.preventDefault();
   }
   lastTouchEnd = now;
 };
 
-export const startScrollLock = () => {
-  document.body.addEventListener('touchmove', preventDefaultTouchMove, false);
+/**
+ * 設定を上書きします。
+ *
+ * @param userConfigs
+ */
+export const setConfigs = (userConfigs = {}) => {
+  Object.assign(configs, userConfigs);
 };
 
-export const stopScrollLock = () => {
-  document.body.removeEventListener(
+/**
+ * ブラウザ標準のスクロール動作を止めます。
+ */
+export const startScrollLock = () => {
+  configs.targetRootDom.addEventListener(
     'touchmove',
     preventDefaultTouchMove,
-    false
+    configs.addEventListenerOptions
   );
 };
 
-export const startZoomLock = (doubleTapInterval = 500) => {
-  document.documentElement.addEventListener(
+/**
+ * ブラウザ標準のスクロール動作に戻します。
+ */
+export const stopScrollLock = () => {
+  configs.targetRootDom.removeEventListener(
+    'touchmove',
+    preventDefaultTouchMove,
+    configs.addEventListenerOptions
+  );
+};
+
+/**
+ * ブラウザ標準の拡大動作を止めます。
+ */
+export const startZoomLock = () => {
+  configs.targetRootDom.addEventListener(
     'touchstart',
     preventDefaultMultiTouch,
     false
   );
 
-  document.documentElement.addEventListener(
+  configs.targetRootDom.addEventListener(
     'touchend',
     event => {
-      preventDefaultDoubleTap(event, doubleTapInterval);
+      preventDefaultDoubleTap(event);
     },
-    false
+    configs.addEventListenerOptions
   );
 };
 
+/**
+ * ブラウザ標準の拡大動作に戻します。
+ */
 export const stopZoomLock = () => {
-  document.documentElement.removeEventListener(
+  configs.targetRootDom.removeEventListener(
     'touchstart',
     preventDefaultMultiTouch,
-    false
+    configs.addEventListenerOptions
   );
 
-  document.documentElement.removeEventListener(
+  configs.targetRootDom.removeEventListener(
     'touchend',
     preventDefaultDoubleTap,
-    false
+    configs.addEventListenerOptions
   );
 };
 
-export const startLock = (doubleTapInterval = 500) => {
+/**
+ * ズームと拡大のブラウザ標準の動作を発生しないようにします。
+ */
+export const startLock = () => {
   startScrollLock();
-  startZoomLock(doubleTapInterval);
+  startZoomLock();
 };
 
+/**
+ * ズームとスクロールの挙動を標準に戻します。
+ */
 export const stopLock = () => {
   stopScrollLock();
   stopZoomLock();
 };
 
-export const startLockAutoDetect = (doubleTapInterval = 500) => {
+/**
+ * IOS かどうかを自動判定しiOSの時のみズームと拡大のブラウザ標準の動作を発生しないようにします。
+ */
+export const startLockAutoDetect = () => {
   if ('iOS' === parser.getOS().name) {
-    startLock(doubleTapInterval);
+    startLock();
   }
 };

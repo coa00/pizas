@@ -59,3 +59,28 @@ stopLock();
 
 ```
 
+## API
+
+
+#### startLockAutoDetect
+
+IOS かどうかを自動判定しiOSの時のみズームと拡大のブラウザ標準の動作を発生しないようにします。
+
+
+#### stopLock
+ズームとスクロールの挙動を標準に戻します。
+ 
+#### setConfigs
+設定を上書きします。
+
+
+##### Configs
+
+```$xslt
+{
+  capture: false,// キャプチャリングに変更したい場合はtrue 
+  doubleTapInterval: 500, // ダブルタップの間隔(msec)
+  targetRootDom: document.documentElement // ルートのドム設定
+};
+```
+
