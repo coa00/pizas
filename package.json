@@ -1,6 +1,6 @@
 {
   "name": "pizas",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "prevent defalut zoom and scroll of safari for full screen web app.",
   "main": "./build/pizas.js",
   "scripts": {
