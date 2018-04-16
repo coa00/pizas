@@ -4,10 +4,10 @@ var path = require('path');
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: "pizas.js",
-    library: "pizas",
-    libraryTarget: "umd",
-    path: path.resolve(__dirname, 'build'),
+    filename: 'pizas.js',
+    library: 'pizas',
+    libraryTarget: 'umd',
+    path: path.resolve(__dirname, 'build')
   },
   module: {
     rules: [

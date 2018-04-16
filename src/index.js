@@ -1,4 +1,5 @@
 import UAParser from 'ua-parser-js';
+import detectPassiveEvents from 'detect-passive-events';
 import loglevel from 'loglevel';
 
 const log = loglevel.getLogger('preventZoomAndScroll');
@@ -12,10 +13,14 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const configs = {
-  addEventListenerOptions: { capture: false, passive: false },
+  capture: false,
   doubleTapInterval: 500,
   targetRootDom: document.documentElement
 };
+
+const listenerOption = detectPassiveEvents.hasSupport
+  ? { capture: configs.capture, passive: false }
+  : false;
 
 /**
  * @param event
@@ -67,7 +72,7 @@ export const startScrollLock = () => {
   configs.targetRootDom.addEventListener(
     'touchmove',
     preventDefaultTouchMove,
-    configs.addEventListenerOptions
+    listenerOption
   );
 };
 
@@ -78,7 +83,7 @@ export const stopScrollLock = () => {
   configs.targetRootDom.removeEventListener(
     'touchmove',
     preventDefaultTouchMove,
-    configs.addEventListenerOptions
+    listenerOption
   );
 };
 
@@ -97,7 +102,7 @@ export const startZoomLock = () => {
     event => {
       preventDefaultDoubleTap(event);
     },
-    configs.addEventListenerOptions
+    listenerOption
   );
 };
 
@@ -108,13 +113,13 @@ export const stopZoomLock = () => {
   configs.targetRootDom.removeEventListener(
     'touchstart',
     preventDefaultMultiTouch,
-    configs.addEventListenerOptions
+    listenerOption
   );
 
   configs.targetRootDom.removeEventListener(
     'touchend',
     preventDefaultDoubleTap,
-    configs.addEventListenerOptions
+    listenerOption
   );
 };
 

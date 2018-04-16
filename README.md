@@ -80,7 +80,7 @@ IOS かどうかを自動判定しiOSの時のみズームと拡大のブラウ�
 {
   capture: false,// キャプチャリングに変更したい場合はtrue 
   doubleTapInterval: 500, // ダブルタップの間隔(msec)
-  targetRootDom: document.documentElement // ルートのドム設定
+  targetRootDom: document.documentElement // ルートのdom設定
 };
 ```
 
