@@ -14,7 +14,7 @@
 ### es6, babel, webpack
 
 ```$xslt
-npm install git+ssh://git@devxserve:29418/aoki.kohei/pizas.git --save
+npm install pizas --save
 ```
 
 
