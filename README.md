@@ -4,8 +4,6 @@
 
 ### global
 
-
-
 ```
 <script src="./lib/pizas.js"></script>
 ```
@@ -64,23 +62,23 @@ stopLock();
 
 #### startLockAutoDetect
 
-IOS かどうかを自動判定しiOSの時のみズームと拡大のブラウザ標準の動作を発生しないようにします。
+prevent zoom and scroll only mobile safari.
 
 
 #### stopLock
-ズームとスクロールの挙動を標準に戻します。
+stop prevent.
  
 #### setConfigs
-設定を上書きします。
+override configs.
 
 
 ##### Configs
 
 ```$xslt
 {
-  capture: false,// キャプチャリングに変更したい場合はtrue 
-  doubleTapInterval: 500, // ダブルタップの間隔(msec)
-  targetRootDom: document.documentElement // ルートのdom設定
+  capture: false,
+  doubleTapInterval: 500, // msec
+  targetRootDom: document.documentElement
 };
 ```
 

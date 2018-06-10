@@ -57,7 +57,7 @@ const preventDefaultDoubleTap = event => {
 };
 
 /**
- * 設定を上書きします。
+ * override configs
  *
  * @param userConfigs
  */
@@ -66,7 +66,7 @@ export const setConfigs = (userConfigs = {}) => {
 };
 
 /**
- * ブラウザ標準のスクロール動作を止めます。
+ * prevent default scroll
  */
 export const startScrollLock = () => {
   configs.targetRootDom.addEventListener(
@@ -77,7 +77,7 @@ export const startScrollLock = () => {
 };
 
 /**
- * ブラウザ標準のスクロール動作に戻します。
+ * revert scroll
  */
 export const stopScrollLock = () => {
   configs.targetRootDom.removeEventListener(
@@ -88,7 +88,7 @@ export const stopScrollLock = () => {
 };
 
 /**
- * ブラウザ標準の拡大動作を止めます。
+ * prevent default zoom
  */
 export const startZoomLock = () => {
   configs.targetRootDom.addEventListener(
@@ -107,7 +107,7 @@ export const startZoomLock = () => {
 };
 
 /**
- * ブラウザ標準の拡大動作に戻します。
+ * revert zoom
  */
 export const stopZoomLock = () => {
   configs.targetRootDom.removeEventListener(
