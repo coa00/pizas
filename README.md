@@ -1,7 +1,7 @@
 # pizas (prevent ios zoom and scroll)
 
 [![Build Status](https://travis-ci.org/coa00/pizas.svg?branch=master)](https://travis-ci.org/coa00/pizas)
-
+[![npm version](https://badge.fury.io/js/pizas.svg)](https://badge.fury.io/js/pizas)
 ## install
 
 ### global
